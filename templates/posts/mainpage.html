@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="vn">
+    <head>
+        <meta charset="utf-8">
+        <title>Baller Booster Newspaper</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--  Django import style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/icoMoon.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/superfish.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+        
+        <script type="text/javascript" src="{% static 'js/modernizr.custom.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_rokkitt.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_opensans.css' %}" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+            <link rel="stylesheet" href="css/ie.css" type="text/css" media="all" />
+			<script src="js/PIE_IE678.js"></script>
+        <![endif]-->
+        
+        <!-- Colors style 
+		-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/colors/default.css' %}" id="colors"/>
+		
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+    </head>
+    
+<body>
+
+<div class="wrapper kopa-shadow">
+    
+    <div class="row-fluid">
+        
+        <div class="span12 clearfix">
+        
+            <header id="page-header">
+            
+                <div id="header-top" class="clearfix">
+                            
+                    <div class="kp-headline-wrapper clearfix">
+                    	{% if list_live_news_flag %}
+                        <h6 class="kp-headline-title">Trực tiếp<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% else %}
+                        <h6 class="kp-headline-title">Tin mới<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% endif %}
+                        
+                    </div><!--kp-headline-wrapper-->
+                    
+                    <div class="social-search-box">
+                    
+                        <ul class="social-links clearfix">
+                            <li><a href="{{page_infor.tumble }}" target="_blank" data-icon="&#xe1ea;" title="Tumble"></a></li>
+                            <li><a href="{{page_infor.youtube }}" target="_blank" data-icon="&#xe1d8;" title="Youtube"></a></li>
+                            <li><a href="{{page_infor.facebook }}" target="_blank" data-icon="&#xe1c3;" title="Facebook"></a></li>
+                            <li><a href="#" data-icon="&#xe1c7;" target="_blank" title="Twitter"></a></li>
+                            <li><a href="#" data-icon="&#xe1ca;" target="_blank" title="RSS"></a></li>
+                           <!-- <li><a href="#" data-icon="&#xe1d3;"></a></li> -->
+							 <!-- <li><a href="#" >Login</a></li>   -->
+                        </ul><!--social-links-->
+                        
+                        <div class="sb-search-wrapper">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Tìm kiếm..." type="text" value="" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"></span>
+                                </form>
+                            </div><!--sb-search-->
+                        </div><!--sb-search-wrapper-->
+                
+                    </div><!--social-search-box-->                    
+                    
+                </div><!--header-top-->
+                
+                <div id="header-middle" class="clearfix">
+                
+                	<div id="logo-image">
+                    	<a href="index.html"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                    </div><!--logo-image-->
+                    <div class="top-banner">
+                    	<a href="#"><img src="{% static 'placeholders/adv-1.jpg' %}" alt="" /></a>
+                    </div><!--top-banner-->
+                    
+                </div><!--header-middle-->
+                
+               <div id="header-bottom">
+               
+              		<nav id="main-nav">
+                    	
+                        <ul id="main-menu" class="clearfix">
+                        	<li class="current-menu-item"><a href="{% url 'posts:index' %}">Trang Chủ</a><span></span></li>
+                            <li>
+                            	<a href="{% url 'posts:list_news' %}">Tin tức</a><span></span>
+                                <ul>	
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+                            </li>
+							<li>
+								<a href="{% url 'posts:video'%}">Videos</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+							<li>
+								<a href="{% url 'posts:gallery'%}">Ảnh</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+                            <li>
+                            	<a href="{% url 'posts:list_guide'%}">Hướng dẫn</a><span></span>
+                            	<ul>
+                            		<li><a href="{% url 'posts:list_news' %}">Cơ bản</a></li>
+                                	<li><a href="{% url 'posts:list_news' %}">Nâng cao</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a><span></span></li> 
+                        </ul><!--main-menu-->
+                        <!-- comment mobile -menu -->
+                        <div id="mobile-menu">
+                            <span>Menu</span>
+                            <ul id="toggle-view-menu">
+                                <li class="clearfix"><h3><a href="{% url 'posts:index' %}">Trang Chủ</a></h3></li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li><a href="{% url 'posts:video'%}">Videos</a></li>
+                                            <li><a href="{% url 'posts:gallery'%}">Ảnh</a></li>
+                                            <li><a href="{% url 'posts:list_guide'%}">Hướng dẫn</a></li>
+                                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li>
+                                            	<a href="{% url 'posts:list_news' %}">Giải Đấu</a>
+                                            	<ul>
+                                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                                                           
+                                <li class="clearfix"><h3><a href="contact.html">Contact</a></h3></li>					
+                            </ul><!--toggle-view-menu-->
+                        </div><!--mobile-menu-->
+                        
+                    </nav><!--main-nav-->
+                     
+               </div><!--header-bottom-->
+            
+            </header><!--page-header-->
+            
+            <div id="main-content">
+            	
+                <div class="widget-area-1">
+                	
+                    <div class="widget home-slider-widget">
+                    	<h3 class="widget-title clearfix">
+                        	<span class="title-text">Tin Nóng
+                            	<span class="triangle-right"></span>
+                                <span class="triangle-left"></span>
+                                <span class="triangle-bottom"></span>
+                            </span>
+                            <span class="title-right"></span>
+                        </h3>
+                        <div class="home-slider flexslider">
+                        	<ul class="slides">
+                        	{% if list_hot_news %}
+                        		{% for news in list_hot_news %}
+                            	<li>
+                                	<article class="entry-item">
+                                    	<h2 class="entry-title"><a href="{% url 'posts:single_post' %}?id={{news.pk}}" title="{{ news.title }}">{{ news.title }}</a></h2>
+                                        <img src="{{ news.image_description.url }}" alt=""  width="411" height="446" />
+                                    </article>
+                                </li>
+                                {% endfor %}
+                             {% endif %}
+                            </ul><!--slides-->
+                        </div><!--home-slider-->
+                    </div><!--home-slider-widget-->
+                    
+                </div><!--widget-area-1-->
+                
+                <div class="widget-area-2">
+                
+                	<div class="widget kopa-featured-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Giai Dau</span></h3>
+                        <article class="entry-item">
+                        	<header>
+                            	<h4 class="entry-title"><a href="#">Minh Bi bật khóc khi nhìn Minh Chiến úp rổ </a></h4>
+                                <span class="entry-date"><span class="kopa-minus"></span> 11/10/2016</span>
+                            </header>
+                            <div class="entry-content">
+                            	<div class="entry-thumb">
+                                	<a href="#"><img src="{% static 'placeholders/minh-hang-hai-phong-3.jpg' %}" alt="" /></a>
+                                	<a href="#"><img src="{% static 'placeholders/minh-hang-hai-phong-3.jpg' %}" alt="" /></a>
+                                </div>
+                                <p>Minh Bi bật khóc khi nhìn Minh Chiến úp rổ <a class="more-link" href="#">[...]</a></p>
+                            </div>
+                        </article><!--entry-item-->
+                        <ul class="older-post">
+                        	<li>
+                            	<a href="#">News top2</a>
+                            </li>
+                            <li>
+                            	<a href="#">News top3</a>
+                            </li>
+                            <li>
+                            	<a href="#">News top4</a>
+                            </li>
+                        </ul><!--older-post-->
+                    </div><!--kopa-featured-widget-->
+                    
+                </div><!--widget-area-2-->
+                
+                <div class="widget-area-3 sidebar">
+                	<div class="widget kopa-article-list-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Xu hướng</span></h3>
+                        <div class="list-container-1">
+                            <ul class="tabs-1 clearfix">
+                                <li class="active"><a href="#tab-1-1">Bài viết</a></li>
+                                <li><a href="#tab-1-2">Ảnh</a></li>
+                                <li><a href="#tab-1-3">Hướng dẫn</a></li>
+                                <li><a href="#tab-1-4">Video</a></li>
+                            </ul><!--tabs-1-->
+                        </div>
+                        <div class="tab-container-1">
+                            <div class="tab-content-1" id="tab-1-1">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-2">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-3">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-4">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content clearfix">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->            
+                        </div><!--tab-container-1-->
+                    </div><!--kopa-article-list-widget-->
+                </div><!--widget-area-3-->
+                
+                <div class="clear"></div>
+                
+                <div class="widget-area-4">
+                
+                	<div class="kopa-divider"></div>
+                    
+                    <div class="widget kopa-carousel-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Tin Lẻ</span></h3>
+                        <div class="list-carousel responsive" >
+                            <ul class="kopa-featured-news-carousel">
+                                <li style="width: 234px;">
+                                    <article class="entry-item clearfix">
+                                        <div class="entry-thumb">
+                                            <a href="#"><img src="placeholders/post-image/post-2.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <header>
+                                            	<h4 class="entry-title"><a href="#">Tin lẻ 1</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </header>
+                                            <p>Test content Tin lẻ</p>
+                                        </div><!--entry-content-->
+                                    </article><!--entry-item-->
+                                </li>
+                                <li style="width: 234px;">
+                                    <article class="entry-item clearfix">
+                                        <div class="entry-thumb">
+                                            <a href="#"><img src="placeholders/post-image/post-3.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <header>
+                                            	<h4 class="entry-title"><a href="#">Tin lẻ 2</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </header>
+                                            <p>Test content Tin lẻ</p>
+                                        </div><!--entry-content-->
+                                    </article><!--entry-item-->
+                                </li>
+                                <li style="width: 234px;">
+                                    <article class="entry-item clearfix">
+                                        <div class="entry-thumb">
+                                            <a href="#"><img src="placeholders/post-image/post-4.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <header>
+                                            	<h4 class="entry-title"><a href="#">Tin lẻ 3</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </header>
+                                            <p>Test content Tin lẻ</p>
+                                        </div><!--entry-content-->
+                                    </article><!--entry-item-->
+                                </li>
+                                <li style="width: 234px;">
+                                    <article class="entry-item clearfix">
+                                        <div class="entry-thumb">
+                                            <a href="#"><img src="placeholders/post-image/post-5.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <header>
+                                            	<h4 class="entry-title"><a href="#">Tin lẻ 4</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </header>
+                                            <p>Test content Tin lẻ</p>
+                                        </div><!--entry-content-->
+                                    </article><!--entry-item-->
+                                </li>
+                                <li style="width: 234px;">
+                                    <article class="entry-item clearfix">
+                                        <div class="entry-thumb">
+                                            <a href="#"><img src="placeholders/post-image/post-2.jpg" alt="" /></a>
+                                        </div>
+                                        <div class="entry-content">
+                                            <header>
+                                            	<h4 class="entry-title"><a href="#">Tin lẻ 5</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                            </header>
+                                            <p>Test content Tin lẻ</p>
+                                        </div><!--entry-content-->
+                                    </article><!--entry-item-->
+                                </li>
+                            </ul><!--kopa-featured-news-carousel-->
+                            <div class="clearfix"></div>
+                            <div class="carousel-nav clearfix">
+                                <a id="prev-1" class="carousel-prev" href="#">&lt;</a>
+                                <a id="next-1" class="carousel-next" href="#">&gt;</a>
+                            </div>
+                            <div id="pager2" class="pager"></div>
+                        </div><!--list-carousel-->
+                    </div><!--kopa-carousel-widget-->
+                    
+                    <div class="kopa-divider"></div>
+                    
+                </div><!--widget-area-4-->
+                
+                <div id="main-col">
+                	
+                    <div class="widget-area-6">                    
+                    	
+                        <div class="widget kopa-video-widget">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Videos</span></h3>
+                            <ul>
+                            	<li>
+                                	<article class="entry-item">
+                                    	<header>
+                                        	<h4 class="entry-title"><a href="#">Video 1</a></h4>
+                                            <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        </header>
+                                        <div class="entry-content">
+                                        	<div class="entry-thumb">
+                                            	<a class="play-icon" href="https://www.youtube.com/watch?v=aVQtVzIFRi0" rel="prettyPhoto[kp-video]"></a>
+                                                <img src="placeholders/post-image/post-6.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                	<article class="entry-item">
+                                    	<header>
+                                        	<h4 class="entry-title"><a href="#">Video 2</a></h4>
+                                            <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        </header>
+                                        <div class="entry-content">
+                                        	<div class="entry-thumb">
+                                            	<a class="play-icon" href="https://www.youtube.com/watch?v=aVQtVzIFRi0" rel="prettyPhoto[kp-video]"></a>
+                                                <img src="placeholders/post-image/post-30.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li>
+                                	<article class="entry-item">
+                                    	<header>
+                                        	<h4 class="entry-title"><a href="#">Video 3</a></h4>
+                                            <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        </header>
+                                        <div class="entry-content">
+                                        	<div class="entry-thumb">
+                                            	<a class="play-icon" href="https://www.youtube.com/watch?v=aVQtVzIFRi0" rel="prettyPhoto[kp-video]"></a>
+                                                <img src="placeholders/post-image/post-31.jpg" alt="" />
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                        </div><!--kopa-video-widget-->
+                    
+                    </div><!--widget-area-6-->
+                    
+                    <div class="widget-area-7">
+                    	
+                        <div class="widget kopa-entry-list-widget clearfix">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Tin VBA</span></h3>
+                            <article class="entry-item">
+                            	<div class="entry-thumb">
+                                	<a href="#"><img src="placeholders/post-image/post-7.jpg" alt="" /></a>
+                                </div>
+                                <div class="entry-content">
+                                	<header>
+                                    	<h4 class="entry-title"><a href="#">Loris Capirossi Retires, Riders Pay Tribute</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                    </header>
+                                    <p>Test content Tin VBA</p>
+                                </div>
+                            </article><!--entry-item-->
+                            <ul class="older-post">
+                                <li>
+                                    <a href="#">India doesn't let blasts derail Pakistan talks</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                                <li>
+                                    <a href="#">From laying bricks to Olympic gold</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                                <li>
+                                    <a href="#">Prince William And Kate Middleto..</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                            </ul><!--older-post-->
+                        </div><!--kopa-entry-list-widget-->
+                        
+                        <div class="kopa-divider"></div>
+                        
+                        <div class="widget kopa-entry-list-widget clearfix">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Tin NBA</span></h3>
+                            <article class="entry-item">
+                            	<div class="entry-thumb">
+                                	<div class="entry-thumb-slider flexslider">
+                                        <ul class="slides">
+                                            <li>
+                                                <img src="placeholders/post-image/post-8.jpg" alt="" />
+                                            </li>
+                                            <li>
+                                                <img src="placeholders/post-image/post-7.jpg" alt="" />
+                                            </li>
+                                        </ul><!--slides-->
+                                    </div><!--entry-thumb-slider-->
+                                </div>
+                                <div class="entry-content">
+                                	<header>
+                                    	<h4 class="entry-title"><a href="#">Loris Capirossi Retires, Riders Pay Tribute</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                    </header>
+                                    <p>Test content Tin VBA</p>
+                                </div>
+                            </article><!--entry-item-->
+                            <ul class="older-post">
+                                <li>
+                                    <a href="#">India doesn't let blasts derail Pakistan talks</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                                <li>
+                                    <a href="#">From laying bricks to Olympic gold</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                                <li>
+                                    <a href="#">Prince William And Kate Middleto..</a>
+                                    <p>Test content Tin VBA</p>
+                                </li>
+                            </ul><!--older-post-->
+                        </div><!--kopa-entry-list-widget-->
+                        
+                    </div><!--widget-area-7-->
+                    
+                    <div class="clear"></div>
+                    
+                    <div class="widget-area-8">
+                    
+                    	<div class="kopa-divider"></div>
+                        
+                        <div class="widget kopa-twitter-widget">
+                        	<h3 class="widget-title clearfix">
+                                <span class="title-text">Tin Facebook
+                                    <span class="triangle-right"></span>
+                                    <span class="triangle-left"></span>
+                                    <span class="triangle-bottom"></span>
+                                </span>
+                                <span class="title-right">Should There be Lights on the Park Arthur Sledding Hill?</span>
+                            </h3>
+                            <div id="tweets" class="clearfix"></div>
+                            <a class="load-more" href="#">Cập nhật</a>
+                        </div><!--kopa-twitter-widget-->
+                        
+                        <div class="kopa-divider"></div>
+                    	
+                    </div><!--widget-area-8-->
+                    
+                    <div class="widget-area-9">
+                    	<div class="widget kopa-entry-list-widget">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Luật thi đấu</span></h3>
+                            <article class="entry-item">
+                            	<div class="entry-thumb">
+                                	<a href="#"><img src="placeholders/post-image/post-9.jpg" alt="" /></a>
+                                </div>
+                                <div class="entry-content">
+                                	<header>
+                                    	<h4 class="entry-title"><a href="#">McIlroy in contention at KLM Open</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                    </header>
+                                    <p>Rory McIlroy has set up the possibility of a special Sunday for himself and girlfriend Caroline Wozniacki.</p>
+                                </div>
+                            </article><!--entry-item-->
+                            <ul class="older-post">
+                                <li class="clearfix">
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                        <a href="#">India doesn't let blasts derail Pakistan talks</a>
+                                        <p>Test content Tin VBA</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                        <a href="#">Long putters should banned?</a>
+                                        <p>Test content Tin VBA</p>
+                                    </div>
+                                </li>
+                            </ul><!--older-post-->
+                        </div><!--kopa-entry-list-widget-->
+                    </div><!--widget-area-9-->
+                    
+                    <div class="widget-area-10">
+                    	<div class="widget kopa-entry-list-widget">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Hướng dẫn</span></h3>
+                            <article class="entry-item">
+                            	<div class="entry-thumb">
+                                	<a href="#"><img src="placeholders/post-image/post-10.jpg" alt="" /></a>
+                                </div>
+                                <div class="entry-content">
+                                	<header>
+                                    	<h4 class="entry-title"><a href="#">McIlroy in contention at KLM Open</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                    </header>
+                                    <p>Rory McIlroy has set up the possibility of a special Sunday for himself and girlfriend Caroline Wozniacki.</p>
+                                </div>
+                            </article><!--entry-item-->
+                            <ul class="older-post">
+                                <li class="clearfix">
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                        <a href="#">India doesn't let blasts derail Pakistan talks</a>
+                                        <p>Test content Tin VBA</p>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                        <a href="#">Long putters should banned?</a>
+                                        <p>Test content Tin VBA</p>
+                                    </div>
+                                </li>
+                            </ul><!--older-post-->
+                        </div><!--kopa-entry-list-widget-->
+                    </div><!--widget-area-10-->
+                    
+                    <div class="clear"></div>
+                    
+                    <div class="widget-area-11">
+                    	
+                        <div class="kopa-divider"></div>
+                        
+                        <div class="widget kopa-gallery-widget">
+                        	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Kho Ảnh</span></h3>
+                            <div class="gallery-slider flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="placeholders/post-image/post-11.jpg" alt="" />
+                                        <h2 class="gallery-caption"><a href="#">Ảnh 1 </a></h2>
+                                    </li>
+                                    <li>
+                                        <img src="placeholders/post-image/post-11.jpg" alt="" />
+                                        <h2 class="gallery-caption"><a href="#">Ảnh 2</a></h2>
+                                    </li>
+                                </ul><!--slides-->
+                            </div><!--gallery-slider-->
+                        </div><!--kopa-gallery-widget-->
+                        
+                    </div><!--widget-area-11-->
+                    
+                </div><!--main-col-->
+                
+                <div class="widget-area-5 sidebar">
+                
+                	<div class="widget kopa-adv-widget">
+                    	<div class="kopa-banner-300">
+                        	<a href="#"><img src="placeholders/banner-300-300.jpg" alt="" /></a>
+                        </div><!--kopa-banner-300-->
+                    </div><!--widget-->
+                    
+                    <div class="widget kopa-most-review-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Xem nhiều nhất</span></h3>
+                        <ul>
+                        	<li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-1.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-2.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-3.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div><!--kopa-most-review-widget-->
+                    
+                    <div class="widget kopa-audio-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Audio</span></h3>
+                        <article class="entry-item">
+                            <h4 class="entry-title"><a href="#">Test nhạc : Phía Sau một cô gái - SooBin Hoàng Sơn </a></h4>
+                            <div class="entry-thumb">
+							<audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+								<source type="audio/mp3" src="http://mp3.zing.vn/download/song/Phia-Sau-Mot-Co-Gai-Soobin-Hoang-Son/ZHcHyknapaaZpvctkFJyFHLm">
+								Sorry, your browser does not support HTML5 audio.
+							</audio>
+                            	 <ul id="playlist">
+									<li class="active">
+										<a href="http://mp3.zing.vn/download/song/Nhu-Phut-Ban-Dau-Noo-Phuoc-Thinh/LnJHTLHaWNQsxActLFJtbHZH">
+										   Như phút ban đầu - Noo Phước Thịnh
+										</a>
+									</li>
+									<li>
+										<a href="http://mp3.zing.vn/download/song/Hay-Ra-Khoi-Nguoi-Do-Di-Phan-Manh-Quynh/kncHtLHNQaWkHmJyLDJybnkm">
+											Hãy ra khỏi người đó đi - Phan Mạnh Quỳnh
+										</a>
+									</li>
+									<li>
+										<a href="http://mp3.zing.vn/download/song/Minh-La-Gi-Cua-Nhau-Lou-Hoang/kmxmyZHNQsWxucsTLFJtDmZH">
+											Mình là gì của nhau - Lou Hoàng
+										</a>
+									</li>
+								</ul>
+
+							<script>
+								var audio;
+								var playlist;
+								var tracks;
+								var current;
+
+								init();
+								function init(){
+									current = 0;
+									audio = $('#audio');
+									playlist = $('#playlist');
+									tracks = playlist.find('li a');
+									len = tracks.length;
+									audio[0].volume = .10;
+									// audio[0].play(); // add thêm nếu muốn auto play
+									playlist.find('a').click(function(e){
+										e.preventDefault();
+										link = $(this);
+										current = link.parent().index();
+										run(link, audio[0]);
+									});
+									audio[0].addEventListener('ended',function(e){
+									current++;
+									if(current < len){
+									  link = playlist.find('a')[current];   
+									  run($(link),audio[0]);
+									}
+									});
+								}
+
+								function run(link, player){
+									player.src = link.attr('href');
+									par = link.parent();
+									par.addClass('active').siblings().removeClass('active');
+									audio[0].load();
+									audio[0].play();
+								}
+							</script>
+                            </div>
+							<!--
+                        </article>
+                        <ul class="older-post">
+                        	<li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 2</a>
+                            </li>
+                            <li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 3</a>
+                            </li>
+                            <li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 4</a>
+                            </li>
+                        </ul>
+						   -->
+                    </div><!--kopa-audio-widget-->
+                    
+                    <div class="widget kopa-categories-widget">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Categories</span></h3>
+                        <div class="acc-wrapper">
+                            <div class="accordion-title">
+                                <h3><a href="#">VBA (12)</a></h3>
+                                <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop  (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">NBA (10)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop  (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">test count 3 (12)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop  (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="accordion-title">
+                                <h3><a href="#">test count 4 (13)</a></h3>
+                                <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop  (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">test count 5 (13)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop  (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                        </div><!--acc-wrapper-->
+                    </div><!--widget-->
+                    
+                    <div class="widget clearfix widget_archive">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Archives</span></h3>		
+                        <ul>
+                            <li><a title="" href="#">January 2016</a>&nbsp;(1)</li>
+                            <li><a title="" href="#">December 2016</a>&nbsp;(12)</li>
+                            <li><a title="" href="#">November 2016</a>&nbsp;(10)</li>
+                            <li><a title="" href="#">October 2016</a>&nbsp;(9)</li>
+                            <li><a title="" href="#">September 2016</a>&nbsp;(5)</li>
+                        </ul>
+                    </div><!--widget-->
+                    
+                    <div class="widget widget_rss">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">RSS </span></h3>
+                        <ul>
+                            <li><a href="" title="">Test RSS 1</a> <span class="rss-date">12/11/2016</span> <cite>Naru</cite></li>
+                            <li><a href="" title="">Test RSS 2</a> <span class="rss-date">12/11/2016</span> <cite>Naru</cite></li>
+                        </ul>
+                    </div><!--widget-->
+                    
+                    <div class="widget widget_recent_comments">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Vừa bình luận</span></h3>
+                        <ul id="recentcomments">
+                            <li class="recentcomments"><a href="#" rel="" class="url">Mr Naru</a> on <a href="#">Bài post 1</a></li>
+                            <li class="recentcomments"><a href="#" rel="" class="url">Mr Naru</a> on <a href="#">Bài post 2</a></li>
+                        </ul><!--recentcomments-->
+                    </div><!--widget-->
+                    
+                    <div class="widget widget_recent_entries">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Vừa đăng tải</span></h3>
+                        <ul>
+                            <li>
+                                <a href="#" title="Hello world!">Hello world!</a>
+                                <span class="post-date">12/11/2016</span>
+                            </li>
+                            <li>
+                                <a href="#" title="Cras porta justo nec est ultricies ultricies">ABCXYZ</a>
+                                <span class="post-date">12/11/2016</span>
+                            </li>
+                        </ul>
+                    </div><!--widget-->
+                	
+                </div><!--widget-area-5-->
+                
+                <div class="clear"></div>
+                
+                <div class="widget-area-12">
+                
+                	<div class="kopa-divider"></div>
+                    
+                    <div class="widget kopa-entry-list-widget">
+                        <h3 class="widget-title clearfix">
+                            <span class="title-text">More News 
+                                <span class="triangle-right"></span>
+                                <span class="triangle-left"></span>
+                                <span class="triangle-bottom"></span>
+                            </span>
+                            <span class="title-right">Test contenttttt</span>
+                        </h3>
+                                                
+                        <div class="list-container-2">
+                            <ul class="tabs-2 clearfix">
+                                <li class="active"><a href="#tab-2-1">Swimming</a></li>
+                                <li><a href="#tab-2-2">NFL</a></li>
+                                <li><a href="#tab-2-3">Golf</a></li>
+                                <li><a href="#tab-2-4">Tennis</a></li>
+                                <li><a href="#tab-2-5">NBA</a></li>
+                                <li><a href="#tab-2-6">MLB</a></li>
+                                <li><a href="#tab-2-7">NHL</a></li>
+                                <li><a href="#tab-2-8">Cricket</a></li>
+                                <li><a href="#tab-2-9">Cycling</a></li>
+                                <li><a href="#tab-2-10">F1</a></li>
+                            </ul><!--tabs-2-->
+                        </div>
+                        <div class="tab-container-2">
+                            <div class="tab-content-2" id="tab-2-1">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-2">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-3">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-4">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-5">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-6">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-7">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-8">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-9">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->
+                            <div class="tab-content-2" id="tab-2-10">                        
+                                <ul class="kopa-entry-list clearfix">
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-12.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-13.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-14.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-15.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt.</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="entry-item">
+                                            <div class="entry-thumb">
+                                                <a href="#"><img src="placeholders/post-image/post-16.jpg" alt="" /></a>
+                                            </div>
+                                            <div class="entry-content">
+                                                <header>
+                                                    <span class="entry-date"><span class="kopa-minus"></span> 12/11/2016</span>
+                                                    <h4 class="entry-title"><a href="#">Test contentttt</a></h4>
+                                                </header>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-2-->            
+                        </div><!--tab-container-2-->
+                        
+                    </div><!--kopa-entry-list-widget-->
+                	
+                </div><!--widget-area-12-->
+                
+            </div><!--main-content-->
+            <div class="bottom-sidebar clearfix">
+            	
+                <div class="widget-area-13">
+                	<div class="widget widget_text">
+                    	<div id="footer-logo">
+                        	<a href="#"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                        </div><!--footer-logo-->
+                        <div class="textwidget">{{page_infor.page_infor}}</div>
+                    </div><!--widget-->
+                </div><!--widget-area-13-->
+                
+                <div class="widget-area-14">
+                	<div class="widget kopa-newsletter-widget">
+                        <h3 class="widget-title">Bạn yêu bóng rổ và muốn trở thành tác giả ?</h3>
+                        	<a class="kopa-button red-button medium-button" href="#">Gửi Bài Viết</a>
+                        <div id="newsletter-response"></div>
+                        <h4>Email : {{page_infor.email}}</h4>
+                    </div><!--widget-->
+                </div><!--widget-area-14-->
+                
+                <div class="clear"></div>
+                
+            </div><!--bottom-sidebar-->
+            
+            <footer id="page-footer">
+            	<nav id="footer-nav">
+                	<ul id="footer-menu" class="clearfix">
+                    	<li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">Cửa hàng</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Điều Khoản</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul><!--footer-menu-->
+                </nav><!--footer-nav-->
+            </footer><!--page-footer-->
+            
+            <p id="back-top">
+                <a href="#top">Back to Top</a>
+            </p>
+
+		</div><!--span12-->
+                
+	</div><!--row-fluid-->
+            
+</div><!--wrapper-->  
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/retina.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.carouFredSel-6.0.4-packed.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/uisearch.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tweetable.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.timeago.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.backstretch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}" charset="utf-8"></script>
+    
+    <script>
+		new UISearch( document.getElementById( 'sb-search' ) );
+	</script>
+    
+</body>
+
+</html>

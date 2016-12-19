@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="vn">
+    <head>
+        <meta charset="utf-8">
+        <title>Baller Booster Newspaper</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--  Django import style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/icoMoon.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/superfish.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+        
+        <script type="text/javascript" src="{% static 'js/modernizr.custom.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_rokkitt.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_opensans.css' %}" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+            <link rel="stylesheet" href="css/ie.css" type="text/css" media="all" />
+			<script src="js/PIE_IE678.js"></script>
+        <![endif]-->
+        
+        <!-- Colors style 
+		-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/colors/default.css' %}" id="colors"/>
+		
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+    </head>
+    
+<body>
+
+<div class="wrapper kopa-shadow">
+    
+    <div class="row-fluid">
+        
+        <div class="span12 clearfix">
+        
+            <header id="page-header">
+            
+                <div id="header-top" class="clearfix">
+                            
+                    <div class="kp-headline-wrapper clearfix">
+                    	{% if list_live_news_flag %}
+                        <h6 class="kp-headline-title">Trực tiếp<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% else %}
+                        <h6 class="kp-headline-title">Tin mới<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% endif %}
+                        
+                    </div><!--kp-headline-wrapper-->
+                    
+                    <div class="social-search-box">
+                    
+                        <ul class="social-links clearfix">
+                            <li><a href="#" data-icon="&#xe1ea;" title="Tumble"></a></li>
+                            <li><a href="#" data-icon="&#xe1d8;" title="Youtube"></a></li>
+                            <li><a href="#" data-icon="&#xe1c3;" title="Facebook"></a></li>
+                            <li><a href="#" data-icon="&#xe1c7;" title="Twitter"></a></li>
+                            <li><a href="#" data-icon="&#xe1ca;" title="RSS"></a></li>
+                           <!-- <li><a href="#" data-icon="&#xe1d3;"></a></li> -->
+							 <!-- <li><a href="#" >Login</a></li>   -->
+                        </ul><!--social-links-->
+                        
+                        <div class="sb-search-wrapper">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Tìm kiếm..." type="text" value="" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"></span>
+                                </form>
+                            </div><!--sb-search-->
+                        </div><!--sb-search-wrapper-->
+                
+                    </div><!--social-search-box-->                    
+                    
+                </div><!--header-top-->
+                
+                <div id="header-middle" class="clearfix">
+                
+                	<div id="logo-image">
+                    	<a href="index.html"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                    </div><!--logo-image-->
+                    <div class="top-banner">
+                    	<a href="#"><img src="{% static 'placeholders/adv-1.jpg' %}" alt="" /></a>
+                    </div><!--top-banner-->
+                    
+                </div><!--header-middle-->
+                
+               <div id="header-bottom">
+               
+              		<nav id="main-nav">
+                    	
+                        <ul id="main-menu" class="clearfix">
+                        	<li class="current-menu-item"><a href="{% url 'posts:index' %}">Trang Chủ</a><span></span></li>
+                            <li>
+                            	<a href="{% url 'posts:list_news' %}">Tin tức</a><span></span>
+                                <ul>
+                                	<li>
+                                		<a href="{% url 'posts:list_news' %}">Giải Đấu</a>
+                                		<ul>
+                                            <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                            <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                        </ul>
+                                	
+                                	</li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+                            </li>
+							<li><a href="{% url 'posts:video'%}">Videos</a><span></span></li>
+							<li><a href="{% url 'posts:gallery'%}">Ảnh</a><span></span></li>
+                            <li><a href="{% url 'posts:list_guide'%}">Hướng dẫn</a><span></span></li>
+                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a><span></span></li> 
+                        </ul><!--main-menu-->
+                        <!-- comment mobile -menu -->
+                        <div id="mobile-menu">
+                            <span>Menu</span>
+                            <ul id="toggle-view-menu">
+                                <li class="clearfix"><h3><a href="{% url 'posts:index' %}">Trang Chủ</a></h3></li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li><a href="{% url 'posts:video'%}">Videos</a></li>
+                                            <li><a href="{% url 'posts:gallery'%}">Ảnh</a></li>
+                                            <li><a href="{% url 'posts:list_guide'%}">Hướng dẫn</a></li>
+                                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li>
+                                            	<a href="{% url 'posts:list_news' %}">Giải Đấu</a>
+                                            	<ul>
+                                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                                                           
+                                <li class="clearfix"><h3><a href="contact.html">Contact</a></h3></li>					
+                            </ul><!--toggle-view-menu-->
+                        </div><!--mobile-menu-->
+                        
+                    </nav><!--main-nav-->
+                     
+               </div><!--header-bottom-->
+            
+            </header><!--page-header-->
+            
+            <div id="main-content">
+            	
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="breadcrumb clearfix">
+                            <span>You are here:</span>
+                            <a href="index.html">Home</a>
+                            <span>/</span>
+                            <span class="current-page">Elements</span>
+                        </div>
+                    </div><!--span12-->
+                </div><!--row-fluid-->
+                
+                <div class="row-fluid">
+                	<div class="span12">
+                    	<div class="elements-box">
+                        
+                        	<h2 class="element-title">Heading</h2>
+                            <h1>Heading 1</h1>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h2>Heading 2</h2>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h3>Heading 3</h3>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h4>Heading 4</h4>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h5>Heading 5</h5>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h6>Heading 6</h6>
+							<p class="mb-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            
+                            <h2 class="element-title">Blockquote</h2>                                	
+							<blockquote>Donec volutpat nibh sit amet libero ornare non laoreet arcu luctus. Donec id arcu quis mauris euismod placerat sit amet ut metus. Sed imperdiet fringilla sem eget euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque adipiscing, neque ut pulvinar tincidunt.</blockquote>
+                            
+                            <div class="row-fluid">
+                            	<div class="span6 mb-20">
+                                	<h2 class="element-title">Tabs</h2>
+                                    <div class="list-container-3">
+                                        <ul class="tabs-3 clearfix">
+                                            <li class="active"><a href="#tab-3-1">Tab 1</a></li>
+                                            <li><a href="#tab-3-2">Tab 2</a></li>
+                                            <li><a href="#tab-3-3">Tab 3</a></li>
+                                        </ul><!--tabs-3-->
+                                    </div>
+                                    <div class="tab-container-3">
+                                        <div class="tab-content-3" id="tab-3-1">                        
+                                            <p>Corpora perpetua iudicabit pri id, aeterno indoctum nam at. Scripta signiferumque eu sit, ridens oporteat ex sit. Sea at laudem detracto contentiones. Vero phaedrum et qui. Qui ancillae mentitum menandri et, an eirmod intellegam mea, vix id nihil deseruisse percipitur. Mea eu esse utinam lobortis</p>
+                                            <ul>
+                                            	<li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                            </ul>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
+                                        </div><!--tab-content-3-->
+                                        <div class="tab-content-3" id="tab-3-2">                        
+                                            <p>Corpora perpetua iudicabit pri id, aeterno indoctum nam at. Scripta signiferumque eu sit, ridens oporteat ex sit. Sea at laudem detracto contentiones. Vero phaedrum et qui. Qui ancillae mentitum menandri et, an eirmod intellegam mea, vix id nihil deseruisse percipitur. Mea eu esse utinam lobortis</p>
+                                            <ul>
+                                            	<li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                            </ul>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
+                                        </div><!--tab-content-3-->
+                                        <div class="tab-content-3" id="tab-3-3">                        
+                                            <p>Corpora perpetua iudicabit pri id, aeterno indoctum nam at. Scripta signiferumque eu sit, ridens oporteat ex sit. Sea at laudem detracto contentiones. Vero phaedrum et qui. Qui ancillae mentitum menandri et, an eirmod intellegam mea, vix id nihil deseruisse percipitur. Mea eu esse utinam lobortis</p>
+                                            <ul>
+                                            	<li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                                <li><a href="#">Phase one: Brainstorming</a></li>
+                                            </ul>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed</p>
+                                        </div><!--tab-content-3-->            
+                                    </div><!--tab-container-3-->
+                                </div><!--span6-->
+                                
+                                <div class="span6 mb-20">
+                                	<h2 class="element-title">Dropcaps</h2>
+                                    <p class="mb-20"><span class="kp-dropcap">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. duis nec purus tellus consectetur. Duis nec purus tellus, quis pulvinar tortor, consectetur adipiscing elit.</p>
+									<p class="mb-20"><span class="kp-dropcap">A</span>orem ipsum dolor sit amet, consectetur adipiscing elit. duis nec purus tellus consectetur. Duis nec purus tellus, quis pulvinar tortor, consectetur adipiscing elit.</p>
+                                    <p class="mb-20"><span class="kp-dropcap color">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. duis nec purus tellus consectetur. Duis nec purus tellus, quis pulvinar tortor, consectetur adipiscing elit.</p>
+									<p class="mb-20"><span class="kp-dropcap color">A</span>orem ipsum dolor sit amet, consectetur adipiscing elit. duis nec purus tellus consectetur. Duis nec purus tellus, quis pulvinar tortor, consectetur adipiscing elit.</p>
+                                </div><!--span6-->
+                                
+                            </div><!--row-fluid-->
+                            
+                            <div class="row-fluid">
+                            	<div class="span6 mb-20">
+                                    <h2 class="element-title">Accordion</h2>
+                                    <div class="acc-wrapper">
+                                        <div class="accordion-title">
+                                            <h3><a href="#">Accordion title 1</a></h3>
+                                            <span>+</span>
+                                        </div>
+                                        <div class="accordion-container">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                        </div>
+                                        <div class="accordion-title">
+                                          <h3><a href="#">Accordion title 2</a></h3>
+                                          <span>+</span>
+                                        </div>
+                                        <div class="accordion-container">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                        </div>
+                                        <div class="accordion-title">
+                                          <h3><a href="#">Accordion title 3</a></h3>
+                                          <span>+</span>
+                                        </div>
+                                        <div class="accordion-container">
+                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                        </div>
+                                    </div><!--acc-wrapper-->
+                                    
+                                </div><!--span6-->
+                                <div class="span6 mb-20">
+                                    <h2 class="element-title">Toggle</h2>
+                                    <ul id="toggle-view">
+                                        <li class="clearfix">                                
+                                            <h3>Powered By United themes</h3>
+                                            <span>+</span>
+                                            <div class="clear"></div>                    
+                                            <div class="panel clearfix">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor. </p>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <span>+</span>
+                                            <h3>The Best Solution For Your Business</h3>
+                                            <div class="clear"></div>                    
+                                            <div class="panel clearfix">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor. </p>
+                                            </div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <span>+</span>
+                                            <h3>For Help Visit UnitedThemes.com</h3>
+                                            <div class="clear"></div>                    
+                                            <div class="panel clearfix">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor. </p>
+                                            </div>
+                                        </li>
+                                    </ul><!--end:toggle-view-->
+                                </div><!--span6-->
+                            </div><!--row-fluid-->
+                            
+                            <h2 class="element-title">Button</h2>
+                            <div class="row-fluid">
+                                <div class="span12 mb-20">
+                                    <a class="kopa-button red-button small-button" href="#">Small button</a>
+                                    <a class="kopa-button border-button small-button" href="#">Small button</a>
+                                    <a class="kopa-button red-button medium-button" href="#">Medium button</a>
+                                    <a class="kopa-button border-button medium-button" href="#">Medium button</a>
+                                    <a class="kopa-button red-button big-button" href="#">Big button</a>
+                                    <a class="kopa-button border-button big-button" href="#">Big button</a>
+                                </div><!--span12-->
+                            </div><!--row-fluid-->
+                            
+                            <h2 class="element-title">Full Width</h2>
+                            <div class="row-fluid">
+                                <div class="span12 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span12-->
+                            </div><!--row-fluid-->
+                            
+                            <h2 class="element-title">One Half</h2>
+                            <div class="row-fluid">
+                                <div class="span6 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span6-->
+                                <div class="span6 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span6-->
+                            </div><!--row-fluid-->
+                            
+                            <h2 class="element-title">One Third</h2>
+                            <div class="row-fluid">
+                                <div class="span4 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span4-->
+                                <div class="span4 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span4-->
+                                <div class="span4 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Aliquam blandit cursus luctus. Ut a metus dolor, vel egestas nulla. Aliquam ultrices pretium risus vel tempor.</p>
+                                </div><!--span4-->
+                            </div><!--row-fluid-->
+                            
+                            <h2 class="element-title">One Fourth</h2>
+                            <div class="row-fluid">
+                                <div class="span3 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span3-->
+                                <div class="span3 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span3-->
+                                <div class="span3 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span3-->
+                                <div class="span3 mb-20">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span3-->
+                            </div><!--row-fluid-->
+                            
+                            
+                            <div class="row-fluid">
+                                <div class="span8 mb-20">
+                                    <h2 class="element-title">Two Third</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span8-->
+                                <div class="span4 mb-20">
+                                    <h2 class="element-title">One Third</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span4-->
+                            </div><!--row-fluid-->
+                            
+                            <div class="row-fluid">
+                                <div class="span9 mb-20">
+                                    <h2 class="element-title">Three Fourth</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula. Quisque eget metus sed mi sollicitudin pretium. Fusce et leo ligula.</p>
+                                </div><!--span9-->
+                                <div class="span3 mb-20">
+                                    <h2 class="element-title">One Fourth</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium dignissim metus at tempus. Mauris in elit in urna bibendum tincidunt ac eget velit.</p>
+                                </div><!--span3-->
+                            </div><!--row-fluid-->
+                                        
+                        </div><!--elements-box-->
+                    </div><!--span12-->
+                </div><!--row-fluid-->
+                
+            </div><!--main-content-->
+            
+            <div class="bottom-sidebar clearfix">
+            	
+                <div class="widget-area-13">
+                	<div class="widget widget_text">
+                    	<div id="footer-logo">
+                        	<a href="#"><img src="placeholders/logo.png" alt="" /></a>
+                        </div><!--footer-logo-->
+                        <div class="textwidget">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus leo ante, consectetur sit amet vulputate vel, dapibus sit amet lectus. Etiam varius dui eget lorem elementum eget mattis sapien interdum. In hac habitasse platea dictumst. Morbi sed nisi est, vitae convallis nulla. Nunc vestibulum ipsum nec libero sodales dignissim.</div>
+                    </div><!--widget-->
+                </div><!--widget-area-13-->
+                
+                <div class="widget-area-14">
+                	<div class="widget kopa-newsletter-widget">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <form action="processNewsletterForm.php" method="post" class="newsletter-form clearfix">
+                            <p class="input-email clearfix">
+                                <input type="text" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" name="email" value="Subscribe to newsletter" class="email" size="40">
+                                <input type="submit" value="Subscribe" class="submit">
+                            </p>
+                        </form>
+                        <div id="newsletter-response"></div>
+                        <p>SLorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus leo ante, consectetur sit amet vulputate</p>
+                    </div><!--widget-->
+                </div><!--widget-area-14-->
+                
+                <div class="clear"></div>
+                
+            </div><!--bottom-sidebar-->
+            
+            <footer id="page-footer">
+            	<nav id="footer-nav">
+                	<ul id="footer-menu" class="clearfix">
+                    	<li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul><!--footer-menu-->
+                </nav><!--footer-nav-->
+            </footer><!--page-footer-->
+            
+            <p id="back-top">
+                <a href="#top">Back to Top</a>
+            </p>
+
+		</div><!--span12-->
+                
+	</div><!--row-fluid-->
+            
+</div><!--wrapper-->  
+
+    
+	<script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/retina.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.carouFredSel-6.0.4-packed.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/uisearch.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tweetable.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.timeago.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.backstretch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}" charset="utf-8"></script>
+    
+    <script>
+		new UISearch( document.getElementById( 'sb-search' ) );
+	</script>
+    
+</body>
+
+</html>

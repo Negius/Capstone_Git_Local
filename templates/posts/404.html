@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="vn">
+    <head>
+        <meta charset="utf-8">
+        <title>Baller Booster Newspaper</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--  Django import style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/icoMoon.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/superfish.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+        
+        <script type="text/javascript" src="{% static 'js/modernizr.custom.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_rokkitt.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_opensans.css' %}" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+            <link rel="stylesheet" href="css/ie.css" type="text/css" media="all" />
+			<script src="js/PIE_IE678.js"></script>
+        <![endif]-->
+        
+        <!-- Colors style 
+		-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/colors/default.css' %}" id="colors"/>
+		
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+    </head>
+    
+<body>
+
+<div class="wrapper kopa-shadow">
+    
+    <div class="row-fluid">
+        
+        <div class="span12 clearfix">
+        
+            <header id="page-header">
+            
+                <div id="header-top" class="clearfix">
+                            
+                    <div class="kp-headline-wrapper clearfix">
+                    	{% if list_live_news_flag %}
+                        <h6 class="kp-headline-title">Trực tiếp<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% else %}
+                        <h6 class="kp-headline-title">Tin mới<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% endif %}
+                        
+                    </div><!--kp-headline-wrapper-->
+                    
+                    <div class="social-search-box">
+                    
+                        <ul class="social-links clearfix">
+                            <li><a href="{{page_infor.tumble }}" target="_blank" data-icon="&#xe1ea;" title="Tumble"></a></li>
+                            <li><a href="{{page_infor.youtube }}" target="_blank" data-icon="&#xe1d8;" title="Youtube"></a></li>
+                            <li><a href="{{page_infor.facebook }}" target="_blank" data-icon="&#xe1c3;" title="Facebook"></a></li>
+                            <li><a href="#" data-icon="&#xe1c7;" target="_blank" title="Twitter"></a></li>
+                            <li><a href="#" data-icon="&#xe1ca;" target="_blank" title="RSS"></a></li>
+                           <!-- <li><a href="#" data-icon="&#xe1d3;"></a></li> -->
+							 <!-- <li><a href="#" >Login</a></li>   -->
+                        </ul><!--social-links-->
+                        
+                        <div class="sb-search-wrapper">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Tìm kiếm..." type="text" value="" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"></span>
+                                </form>
+                            </div><!--sb-search-->
+                        </div><!--sb-search-wrapper-->
+                
+                    </div><!--social-search-box-->                    
+                    
+                </div><!--header-top-->
+                
+                <div id="header-middle" class="clearfix">
+                
+                	<div id="logo-image">
+                    	<a href="index.html"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                    </div><!--logo-image-->
+                    <div class="top-banner">
+                    	<a href="#"><img src="{% static 'placeholders/adv-1.jpg' %}" alt="" /></a>
+                    </div><!--top-banner-->
+                    
+                </div><!--header-middle-->
+                
+               <div id="header-bottom">
+               
+              		<nav id="main-nav">
+                    	
+                        <ul id="main-menu" class="clearfix">
+                        	<li class="current-menu-item"><a href="{% url 'posts:index' %}">Trang Chủ</a><span></span></li>
+                            <li>
+                            	<a href="{% url 'posts:list_news' %}">Tin tức</a><span></span>
+                                <ul>	
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+                            </li>
+							<li>
+								<a href="{% url 'posts:video'%}">Videos</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+							<li>
+								<a href="{% url 'posts:gallery'%}">Ảnh</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+                            <li>
+                            	<a href="{% url 'posts:list_guide'%}">Hướng dẫn</a><span></span>
+                            	<ul>
+                            		<li><a href="{% url 'posts:list_news' %}">Cơ bản</a></li>
+                                	<li><a href="{% url 'posts:list_news' %}">Nâng cao</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a><span></span></li> 
+                        </ul><!--main-menu-->
+                        <!-- comment mobile -menu -->
+                        <div id="mobile-menu">
+                            <span>Menu</span>
+                            <ul id="toggle-view-menu">
+                                <li class="clearfix"><h3><a href="{% url 'posts:index' %}">Trang Chủ</a></h3></li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li><a href="{% url 'posts:video'%}">Videos</a></li>
+                                            <li><a href="{% url 'posts:gallery'%}">Ảnh</a></li>
+                                            <li><a href="{% url 'posts:list_guide'%}">Hướng dẫn</a></li>
+                                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li>
+                                            	<a href="{% url 'posts:list_news' %}">Giải Đấu</a>
+                                            	<ul>
+                                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                                                           
+                                <li class="clearfix"><h3><a href="contact.html">Contact</a></h3></li>					
+                            </ul><!--toggle-view-menu-->
+                        </div><!--mobile-menu-->
+                        
+                    </nav><!--main-nav-->
+                     
+               </div><!--header-bottom-->
+            
+            </header><!--page-header-->
+            
+            <div id="main-content">
+            	
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="breadcrumb clearfix">
+                            <span>You are here:</span>
+                            <a href="index.html">Home</a>
+                            <span>/</span>
+                            <span class="current-page">Error 404</span>
+                        </div>
+                    </div><!--span12-->
+                </div><!--row-fluid-->
+                
+                <div class="row-fluid">
+                	<div class="span12">
+                    	<section class="error-404 clearfix">
+                            <div class="left-col">
+                                <p>404</p>
+                            </div><!--left-col-->
+                            <div class="right-col">
+                                <h1>Page not found...</h1>
+                                <p>We're sorry, but we can't find the page you were looking for. It's probably some thing we've done wrong but now we know about it we'll try to fix it. In the meantime, try one of this options:</p>
+                                <ul class="arrow-list">
+                                    <li><a href="#">Go back to previous page</a></li>
+                                    <li><a href="index.html">Go to homepage</a></li>
+                                </ul>
+                            </div><!--right-col-->
+                        </section><!--error-404-->
+                    </div><!--span12-->
+                </div><!--row-fluid-->
+                
+            </div><!--main-content-->
+            
+            <div class="bottom-sidebar clearfix">
+            	
+                <div class="widget-area-13">
+                	<div class="widget widget_text">
+                    	<div id="footer-logo">
+                        	<a href="#"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                        </div><!--footer-logo-->
+                        <div class="textwidget">{{page_infor.page_infor}}</div>
+                    </div><!--widget-->
+                </div><!--widget-area-13-->
+                
+                <div class="widget-area-14">
+                	<div class="widget kopa-newsletter-widget">
+                        <h3 class="widget-title">Bạn yêu bóng rổ và muốn trở thành tác giả ?</h3>
+                        	<a class="kopa-button red-button medium-button" href="#">Gửi Bài Viết</a>
+                        <div id="newsletter-response"></div>
+                        <h4>Email : {{page_infor.email}}</h4>
+                    </div><!--widget-->
+                </div><!--widget-area-14-->
+                
+                <div class="clear"></div>
+                
+            </div><!--bottom-sidebar-->
+            
+            <footer id="page-footer">
+            	<nav id="footer-nav">
+                	<ul id="footer-menu" class="clearfix">
+                    	<li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">Cửa hàng</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Điều Khoản</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul><!--footer-menu-->
+                </nav><!--footer-nav-->
+            </footer><!--page-footer-->
+            
+            <p id="back-top">
+                <a href="#top">Back to Top</a>
+            </p>
+
+		</div><!--span12-->
+                
+	</div><!--row-fluid-->
+            
+</div><!--wrapper-->  
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/retina.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.carouFredSel-6.0.4-packed.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/uisearch.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tweetable.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.timeago.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.backstretch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}" charset="utf-8"></script>
+    
+    <script>
+		new UISearch( document.getElementById( 'sb-search' ) );
+	</script>
+    
+</body>
+
+</html>

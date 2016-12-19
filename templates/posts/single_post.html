@@ -1,0 +1,895 @@
+<<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="vn">
+    <head>
+        <meta charset="utf-8">
+        <title>Baller Booster Newspaper</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--  Django import style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/icoMoon.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/superfish.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-responsive.css' %}" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+        
+        <script type="text/javascript" src="{% static 'js/modernizr.custom.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_rokkitt.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/googleapis_opensans.css' %}" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+            <link rel="stylesheet" href="css/ie.css" type="text/css" media="all" />
+			<script src="js/PIE_IE678.js"></script>
+        <![endif]-->
+        
+        <!-- Colors style 
+		-->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/colors/default.css' %}" id="colors"/>
+		
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
+
+    </head>
+    
+<body>
+
+<div class="wrapper kopa-shadow">
+    
+    <div class="row-fluid">
+        
+        <div class="span12 clearfix">
+        
+            <header id="page-header">
+            
+                <div id="header-top" class="clearfix">
+                            
+                    <div class="kp-headline-wrapper clearfix">
+                    	{% if list_live_news_flag %}
+                        <h6 class="kp-headline-title">Trực tiếp<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% else %}
+                        <h6 class="kp-headline-title">Tin mới<span></span></h6>
+                        <div class="kp-headline clearfix">                        
+                            <dl class="ticker-1 clearfix">
+                            	{% if list_live_news %}
+                            		{% for news in list_live_news %}
+                                <dd><a href="#">{{ news.content }}</a></dd>
+                                	{% endfor %}
+                                {% endif %}
+                            </dl><!--ticker-1-->
+                        </div><!--kp-headline-->
+                        {% endif %}
+                        
+                    </div><!--kp-headline-wrapper-->
+                    
+                    <div class="social-search-box">
+                    
+                        <ul class="social-links clearfix">
+                            <li><a href="{{page_infor.tumble }}" target="_blank" data-icon="&#xe1ea;" title="Tumble"></a></li>
+                            <li><a href="{{page_infor.youtube }}" target="_blank" data-icon="&#xe1d8;" title="Youtube"></a></li>
+                            <li><a href="{{page_infor.facebook }}" target="_blank" data-icon="&#xe1c3;" title="Facebook"></a></li>
+                            <li><a href="#" data-icon="&#xe1c7;" target="_blank" title="Twitter"></a></li>
+                            <li><a href="#" data-icon="&#xe1ca;" target="_blank" title="RSS"></a></li>
+                           <!-- <li><a href="#" data-icon="&#xe1d3;"></a></li> -->
+							 <!-- <li><a href="#" >Login</a></li>   -->
+                        </ul><!--social-links-->
+                        
+                        <div class="sb-search-wrapper">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Tìm kiếm..." type="text" value="" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"></span>
+                                </form>
+                            </div><!--sb-search-->
+                        </div><!--sb-search-wrapper-->
+                
+                    </div><!--social-search-box-->                    
+                    
+                </div><!--header-top-->
+                
+                <div id="header-middle" class="clearfix">
+                
+                	<div id="logo-image">
+                    	<a href="index.html"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                    </div><!--logo-image-->
+                    <div class="top-banner">
+                    	<a href="#"><img src="{% static 'placeholders/adv-1.jpg' %}" alt="" /></a>
+                    </div><!--top-banner-->
+                    
+                </div><!--header-middle-->
+                
+               <div id="header-bottom">
+               
+              		<nav id="main-nav">
+                    	
+                        <ul id="main-menu" class="clearfix">
+                        	<li class="current-menu-item"><a href="{% url 'posts:index' %}">Trang Chủ</a><span></span></li>
+                            <li>
+                            	<a href="{% url 'posts:list_news' %}">Tin tức</a><span></span>
+                                <ul>	
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+                            </li>
+							<li>
+								<a href="{% url 'posts:video'%}">Videos</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+							<li>
+								<a href="{% url 'posts:gallery'%}">Ảnh</a><span></span>
+								<ul>
+                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Bóng rổ đường phố</a></li>
+                                    <li><a href="{% url 'posts:list_news' %}">Khác</a></li>
+                                </ul>
+							</li>
+                            <li>
+                            	<a href="{% url 'posts:list_guide'%}">Hướng dẫn</a><span></span>
+                            	<ul>
+                            		<li><a href="{% url 'posts:list_news' %}">Cơ bản</a></li>
+                                	<li><a href="{% url 'posts:list_news' %}">Nâng cao</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a><span></span></li> 
+                        </ul><!--main-menu-->
+                        <!-- comment mobile -menu -->
+                        <div id="mobile-menu">
+                            <span>Menu</span>
+                            <ul id="toggle-view-menu">
+                                <li class="clearfix"><h3><a href="{% url 'posts:index' %}">Trang Chủ</a></h3></li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li><a href="{% url 'posts:video'%}">Videos</a></li>
+                                            <li><a href="{% url 'posts:gallery'%}">Ảnh</a></li>
+                                            <li><a href="{% url 'posts:list_guide'%}">Hướng dẫn</a></li>
+                                            <li><a href="{% url 'posts:contact'%}">Liên Hệ</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                
+                                <li class="clearfix">
+                                    <h3><a href="{% url 'posts:list_news' %}">Tin tức</a></h3>
+                                    <span>+</span>
+                                    <div class="clear"></div>                    
+                                    <div class="menu-panel clearfix">
+                                        <ul>
+                                            <li>
+                                            	<a href="{% url 'posts:list_news' %}">Giải Đấu</a>
+                                            	<ul>
+                                                    <li><a href="{% url 'posts:list_news' %}">NBA</a></li>
+                                                    <li><a href="{% url 'posts:list_news' %}">VBA</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                                                           
+                                <li class="clearfix"><h3><a href="contact.html">Contact</a></h3></li>					
+                            </ul><!--toggle-view-menu-->
+                        </div><!--mobile-menu-->
+                        
+                    </nav><!--main-nav-->
+                     
+               </div><!--header-bottom-->
+            
+            </header><!--page-header-->
+            
+            <div id="main-content">
+            	
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="breadcrumb clearfix">
+                            <span>Bạn đang ở:</span>
+                            <a href="{% url 'posts:index' %}">Trang chủ</a>
+                            <span>/</span>
+                            <span class="current-page">{{post.sub_type}}</span>
+                        </div>
+                    </div><!--span12-->
+                </div><!--row-fluid-->
+                
+                <div id="main-col">
+                	
+                    <div class="entry-box clearfix">
+                    	
+                        <div class="entry-thumb">
+                            
+                            <div class="meta-box">
+                                <span class="entry-comments"><span data-icon="&#xe0d1;"></span><a href="#">6</a></span>
+                                <span class="entry-view"><span data-icon="&#xe02b;"></span> 122</span>
+                            </div>
+                        </div>
+                        <header>
+                        	<h4 class="entry-title">{{post.title}}</h4>
+                            <span class="entry-categories"><a href="#">{{post.sub_type}}</a></span>
+                            <span class="entry-date"><span class="kopa-minus"></span> {{post.accept_date}}</span>
+                            <span class="entry-author"> Tác giả: <a href="#">{{post.author}}</a></span>
+                            <span class="entry-author"><span data-icon="&#xe0d1;"></span><a href="#"> 6</a></span>
+                            <span class="entry-author"><span data-icon="&#xe02b;"></span> 122</span>
+                        </header>
+                        <p>
+                        {% if post %}
+                        	{{ post.content|safe }}
+                        {% endif %}
+                        </p>
+                        <ul class="social-link clearfix">
+                        	
+                            <li>Share this Post:</li>
+                            <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_full_path }}" target="_blank" data-icon="&#xe1c3;"></a></li>
+                            <li><a href="#" data-icon="&#xe1c7;"></a></li>
+                            <li><a href="#" data-icon="&#xe1ca;"></a></li>
+                            <li><a href="#" data-icon="&#xe1be;"></a></li>
+                            <li><a href="#" data-icon="&#xe1d3;"></a></li>
+                        </ul>
+                        <footer class="clearfix">
+                            <p class="prev-post">
+                                <a href="#">&laquo;&nbsp;Older Article</a>
+                                <a class="article-title" href="#">Upper Lake in New York Central Park</a>
+                            </p>
+                            <p class="next-post">
+                                <a href="#">Next Article&nbsp;&raquo;</a>
+                                <a class="article-title" href="#">Samsung says microSD slot makes up for Galaxy S4s storage shortcomings</a>                              
+                            </p>
+                        </footer>
+                        
+                    </div><!--entry-box-->
+                    
+                    <div class="about-author clearfix">
+                        <h3>Author</h3>
+                        <div class="about-author-detail clearfix">
+                            <a class="avatar-thumb" href="#"><img src="placeholders/avatar/avatar-1.jpg" alt=""></a>                                
+                            <div class="author-content">
+                                <header>                                
+                                    <a class="author-name" href="#">{{post.author}}</a>                                        
+                                </header>
+                                <p>authour description</p>
+                                <ul class="social-link clearfix">
+                                    <li><a href="#" data-icon="&#xe1c3;"></a></li>
+                                    <li><a href="#" data-icon="&#xe1c7;"></a></li>
+                                    <li><a href="#" data-icon="&#xe1be;"></a></li>
+                                    <li><a href="#" data-icon="&#xe1d3;"></a></li>
+                                </ul>                                
+                            </div><!--author-content-->
+                        </div><!--about-author-detail-->
+                    </div><!--about-author-->
+                    
+                    <div class="kopa-related-post">
+                    	<h3><span class="title-line"></span><span class="title-text">Related Articles</span></h3>
+                        <ul class="clearfix">
+                        	<li>
+                            	<article class="entry-item clearfix">
+                                	<div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-4.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<h4 class="entry-title"><a href="#">Senate teams clash over a schedule for debat</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-5.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<h4 class="entry-title"><a href="#">Senate teams clash over a schedule for debat</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-6.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<h4 class="entry-title"><a href="#">Senate teams clash over a schedule for debat</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-1.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<h4 class="entry-title"><a href="#">Senate teams clash over a schedule for debat</a></h4>
+                                        <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div><!--kopa-related-post-->
+                  
+
+                        <center class="pagination kopa-comment-pagination">                                    
+                            <a href="#comments" class="prev page-numbers">« Previous</a>
+                            <a href="#comments" class="page-numbers">1</a>
+                            <span class="page-numbers current">2</span>            
+                            <a href="#comments" class="next page-numbers">Next »</a>                                    
+                        </center>
+
+                        <div class="clear"></div>
+
+                    
+                    
+                </div><!--main-col-->
+                
+                <div class="widget-area-3 sidebar">
+                	<div class="widget kopa-article-list-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Trending Now</span></h3>
+                        <div class="list-container-1">
+                            <ul class="tabs-1 clearfix">
+                                <li class="active"><a href="#tab-1-1">Stories</a></li>
+                                <li><a href="#tab-1-2">Photo</a></li>
+                                <li><a href="#tab-1-3">List</a></li>
+                                <li><a href="#tab-1-4">Video</a></li>
+                            </ul><!--tabs-1-->
+                        </div>
+                        <div class="tab-container-1">
+                            <div class="tab-content-1" id="tab-1-1">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-2">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-2.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">
+                                            	<a href="#"><img src="placeholders/53x53/53x53-1.jpg" alt="" /></a>
+                                            </span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-3">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->
+                            <div class="tab-content-1" id="tab-1-4">                        
+                                <ul>
+                                	<li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">1</span>
+                                            <div class="entry-content clearfix">
+                                            	<h4 class="entry-title"><a href="#">Adrian Peterson exclusive interview</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#1c1c1c;">2</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Why isn't baseball more popular in the UK?</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb" style="background-color:#666;">3</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Peacock v Browne - Paralympic rivalry</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">4</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">Inspired to try every Olympic sport</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                    <li>
+                                    	<article class="entry-item clearfix">
+                                        	<span class="entry-thumb">5</span>
+                                            <div class="entry-content">
+                                            	<h4 class="entry-title"><a href="#">IPC Championships day-by-day guide</a></h4>
+                                                <span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                                <span class="video-icon" data-icon="&#xe07e;"></span>
+                                            </div>
+                                        </article>
+                                    </li>
+                                </ul>
+                            </div><!--tab-content-1-->            
+                        </div><!--tab-container-1-->
+                    </div><!--kopa-article-list-widget-->
+                    
+                    <div class="widget kopa-adv-widget">
+                    	<div class="kopa-banner-300">
+                        	<a href="#"><img src="placeholders/banner-300-300.jpg" alt="" /></a>
+                        </div><!--kopa-banner-300-->
+                    </div><!--widget-->
+                    
+                    <div class="widget kopa-most-review-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Most Reviews</span></h3>
+                        <ul>
+                        	<li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">Prince Harry in Colo for Warrior Games</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-1.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">North Korea: Something is Wong with this picture</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-2.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                            <li>
+                            	<article class="entry-item clearfix">
+                                	<h4 class="entry-title"><a href="#">19 Sites That Already Look Perfect for iOS 7</a></h4>
+                                    <div class="entry-thumb">
+                                    	<a href="#"><img src="placeholders/65x65/65x65-3.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="entry-content">
+                                    	<span class="entry-date"><span class="kopa-minus"></span> February 23, 2013</span>
+                                        <ul class="kopa-rating clearfix">
+                                        	<li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe131;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                            <li><a href="#" data-icon="&#xe12f;"></a></li>
+                                        </ul>
+                                    </div>
+                                </article>
+                            </li>
+                        </ul>
+                    </div><!--kopa-most-review-widget-->
+                    
+                    <div class="widget kopa-audio-widget">
+                    	<h3 class="widget-title"><span class="title-line"></span><span class="title-text">Audio</span></h3>
+                        <article class="entry-item">
+                            <h4 class="entry-title"><a href="#">Test nhạc : Phía Sau một cô gái - SooBin Hoàng Sơn </a></h4>
+                            <div class="entry-thumb">
+							<audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+								<source type="audio/mp3" src="http://mp3.zing.vn/download/song/Phia-Sau-Mot-Co-Gai-Soobin-Hoang-Son/ZHcHyknapaaZpvctkFJyFHLm">
+								Sorry, your browser does not support HTML5 audio.
+							</audio>
+                            	 <ul id="playlist">
+									<li class="active">
+										<a href="http://mp3.zing.vn/download/song/Nhu-Phut-Ban-Dau-Noo-Phuoc-Thinh/LnJHTLHaWNQsxActLFJtbHZH">
+										   Như phút ban đầu - Noo Phước Thịnh
+										</a>
+									</li>
+									<li>
+										<a href="http://mp3.zing.vn/download/song/Hay-Ra-Khoi-Nguoi-Do-Di-Phan-Manh-Quynh/kncHtLHNQaWkHmJyLDJybnkm">
+											Hãy ra khỏi người đó đi - Phan Mạnh Quỳnh
+										</a>
+									</li>
+									<li>
+										<a href="http://mp3.zing.vn/download/song/Minh-La-Gi-Cua-Nhau-Lou-Hoang/kmxmyZHNQsWxucsTLFJtDmZH">
+											Mình là gì của nhau - Lou Hoàng
+										</a>
+									</li>
+								</ul>
+
+							<script>
+								var audio;
+								var playlist;
+								var tracks;
+								var current;
+
+								init();
+								function init(){
+									current = 0;
+									audio = $('#audio');
+									playlist = $('#playlist');
+									tracks = playlist.find('li a');
+									len = tracks.length;
+									audio[0].volume = .10;
+									// audio[0].play(); // add thêm nếu muốn auto play
+									playlist.find('a').click(function(e){
+										e.preventDefault();
+										link = $(this);
+										current = link.parent().index();
+										run(link, audio[0]);
+									});
+									audio[0].addEventListener('ended',function(e){
+									current++;
+									if(current < len){
+									  link = playlist.find('a')[current];   
+									  run($(link),audio[0]);
+									}
+									});
+								}
+
+								function run(link, player){
+									player.src = link.attr('href');
+									par = link.parent();
+									par.addClass('active').siblings().removeClass('active');
+									audio[0].load();
+									audio[0].play();
+								}
+							</script>
+                            </div>
+							<!--
+                        </article>
+                        <ul class="older-post">
+                        	<li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 2</a>
+                            </li>
+                            <li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 3</a>
+                            </li>
+                            <li class="clearfix">
+                            	<span data-icon="&#xe050;"></span>
+                                <a href="#">Test nhạc 4</a>
+                            </li>
+                        </ul>
+						   -->
+                    </div><!--kopa-audio-widget-->
+                    
+                    <div class="widget kopa-categories-widget">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Categories</span></h3>
+                        <div class="acc-wrapper">
+                            <div class="accordion-title">
+                                <h3><a href="#">Soccer (12)</a></h3>
+                                <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop Tennis (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">Swimming (10)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop Tennis (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">Tennis (12)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop Tennis (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="accordion-title">
+                                <h3><a href="#">NBA (13)</a></h3>
+                                <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop Tennis (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                            <div class="accordion-title">
+                              <h3><a href="#">Volley ball (13)</a></h3>
+                              <span>+</span>
+                            </div>
+                            <div class="accordion-container">
+                                <ul>
+                                    <li><a href="#">News (3)</a></li>
+                                    <li><a href="#">Shop Tennis (4)</a></li>
+                                    <li><a href="#">Standings</a></li>
+                                </ul>
+                            </div>
+                        </div><!--acc-wrapper-->
+                    </div><!--widget-->
+					
+					<div class="widget clearfix widget_archive">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Archives</span></h3>		
+                        <ul>
+                            <li><a title="" href="#">January 2013</a>&nbsp;(1)</li>
+                            <li><a title="" href="#">December 2012</a>&nbsp;(12)</li>
+                            <li><a title="" href="#">November 2012</a>&nbsp;(10)</li>
+                            <li><a title="" href="#">October 2012</a>&nbsp;(9)</li>
+                            <li><a title="" href="#">September 2012</a>&nbsp;(5)</li>
+                        </ul>
+                    </div><!--widget-->
+					
+					<div class="widget widget_rss">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">RSS Feed</span></h3>
+                        <ul>
+                            <li><a href="" title="">Pollishop - OpenCart Theme (Shopping)</a> <span class="rss-date">March 28, 2013</span> <cite>Katilina</cite></li>
+                            <li><a href="" title="">Revoke &ndash; Responsive HTML Theme (Art)</a> <span class="rss-date">March 28, 2013</span> <cite>RedSkyThemes</cite></li>
+                        </ul>
+                    </div><!--widget-->
+					
+					<div class="widget widget_recent_comments">
+                        <h3 class="widget-title"><span class="title-line"></span><span class="title-text">Recent comments</span></h3>
+                        <ul id="recentcomments">
+                            <li class="recentcomments"><a href="#" rel="" class="url">Mr WordPress</a> on <a href="#">Aliquam molestie, erat non laoreet sagittis</a></li>
+                            <li class="recentcomments"><a href="#" rel="" class="url">Mr WordPress</a> on <a href="#">Cras porta justo nec est ultricies ultricies</a></li>
+                        </ul><!--recentcomments-->
+                    </div><!--widget-->
+                    
+                </div><!--widget-area-3-->
+                
+                <div class="clear"></div>
+                
+            </div><!--main-content-->
+            
+            <div class="bottom-sidebar clearfix">
+            	
+                <div class="widget-area-13">
+                	<div class="widget widget_text">
+                    	<div id="footer-logo">
+                        	<a href="#"><img src="{% static 'placeholders/logo.png' %}" alt="" /></a>
+                        </div><!--footer-logo-->
+                        <div class="textwidget">{{page_infor.page_infor}}</div>
+                    </div><!--widget-->
+                </div><!--widget-area-13-->
+                
+                <div class="widget-area-14">
+                	<div class="widget kopa-newsletter-widget">
+                        <h3 class="widget-title">Bạn yêu bóng rổ và muốn trở thành tác giả ?</h3>
+                        	<a class="kopa-button red-button medium-button" href="#">Gửi Bài Viết</a>
+                        <div id="newsletter-response"></div>
+                        <h4>Email : {{page_infor.email}}</h4>
+                    </div><!--widget-->
+                </div><!--widget-area-14-->
+                
+                <div class="clear"></div>
+                
+            </div><!--bottom-sidebar-->
+            
+            <footer id="page-footer">
+            	<nav id="footer-nav">
+                	<ul id="footer-menu" class="clearfix">
+                    	<li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">Cửa hàng</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Điều Khoản</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul><!--footer-menu-->
+                </nav><!--footer-nav-->
+            </footer><!--page-footer-->
+            
+            <p id="back-top">
+                <a href="#top">Back to Top</a>
+            </p>
+
+		</div><!--span12-->
+                
+	</div><!--row-fluid-->
+            
+</div><!--wrapper-->  
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/retina.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.carouFredSel-6.0.4-packed.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/uisearch.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tweetable.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.timeago.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.backstretch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}" charset="utf-8"></script>
+    
+    <script>
+		new UISearch( document.getElementById( 'sb-search' ) );
+	</script>
+    
+</body>
+
+</html>
